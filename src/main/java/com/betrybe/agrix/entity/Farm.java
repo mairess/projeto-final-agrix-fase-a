@@ -19,6 +19,13 @@ public class Farm {
   private String name;
   private double size;
 
+
+  /**
+   * Instantiates a new Farm.
+   */
+  public Farm() {
+  }
+
   /**
    * Instantiates a new Farm.
    *
