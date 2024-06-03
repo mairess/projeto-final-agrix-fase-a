@@ -9,6 +9,6 @@ public class CropNotFoundException extends NotFoundException {
    * Instantiates a new Crop not found exception.
    */
   public CropNotFoundException() {
-    super("Crop not found!");
+    super("Plantação não encontrada!");
   }
 }
