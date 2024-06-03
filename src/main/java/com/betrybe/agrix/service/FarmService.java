@@ -4,7 +4,6 @@ import com.betrybe.agrix.entity.Crop;
 import com.betrybe.agrix.entity.Farm;
 import com.betrybe.agrix.repository.CropRepository;
 import com.betrybe.agrix.repository.FarmRepository;
-import com.betrybe.agrix.service.exception.CropNotFoundException;
 import com.betrybe.agrix.service.exception.FarmNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +81,6 @@ public class FarmService {
    * @param farmId the farm id
    * @return the farm crops
    * @throws FarmNotFoundException the farm not found exception
-   * @throws CropNotFoundException the crop not found exception
    */
   public List<Crop> getFarmCrops(Long farmId) throws FarmNotFoundException {
     Farm farm = findById(farmId);

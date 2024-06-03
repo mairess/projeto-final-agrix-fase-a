@@ -30,11 +30,9 @@ public class FarmController {
 
   /**
    * Instantiates a new Farm controller.
-   *
-   * @param farmServic the farmId servic
    */
-  public FarmController(FarmService farmServic) {
-    this.farmService = farmServic;
+  public FarmController(FarmService farmService) {
+    this.farmService = farmService;
   }
 
   /**
