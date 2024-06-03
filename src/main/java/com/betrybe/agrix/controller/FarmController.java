@@ -4,8 +4,10 @@ import com.betrybe.agrix.controller.dto.CropCreationDto;
 import com.betrybe.agrix.controller.dto.CropDto;
 import com.betrybe.agrix.controller.dto.FarmCreationDto;
 import com.betrybe.agrix.controller.dto.FarmDto;
+import com.betrybe.agrix.entity.Crop;
 import com.betrybe.agrix.entity.Farm;
 import com.betrybe.agrix.service.FarmService;
+import com.betrybe.agrix.service.exception.CropNotFoundException;
 import com.betrybe.agrix.service.exception.FarmNotFoundException;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -89,8 +91,26 @@ public class FarmController {
       @RequestBody CropCreationDto cropCreationDto)
       throws FarmNotFoundException {
     return CropDto.fromEntity(
-        farmService.createCrop(farmId, cropCreationDto.toEntity())
+        farmService.createFarmCrop(farmId, cropCreationDto.toEntity())
     );
+  }
+
+  /**
+   * Create farm crop list.
+   *
+   * @param farmId the farm id
+   * @return the list
+   * @throws FarmNotFoundException the farm not found exception
+   * @throws CropNotFoundException the crop not found exception
+   */
+  @GetMapping("/{farmId}/crops")
+  public List<CropDto> getFarmCrops(@PathVariable Long farmId)
+      throws FarmNotFoundException {
+    List<Crop> crops = farmService.getFarmCrops(farmId);
+
+    return crops.stream()
+        .map(CropDto::fromEntity)
+        .toList();
   }
 
 }
