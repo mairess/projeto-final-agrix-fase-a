@@ -9,6 +9,6 @@ public class FarmNotFoundException extends NotFoundException {
    * Instantiates a new Farm not found exception.
    */
   public FarmNotFoundException() {
-    super("Farm not found!");
+    super("Fazenda não encontrada!");
   }
 }

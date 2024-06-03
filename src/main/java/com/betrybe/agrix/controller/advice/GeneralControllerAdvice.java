@@ -19,7 +19,7 @@ public class GeneralControllerAdvice {
    * @return the response entity
    */
   @ExceptionHandler(NotFoundException.class)
-  public ResponseEntity<String> handleNotFound(RuntimeException exception) {
+  public ResponseEntity<String> handleNotFound(NotFoundException exception) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
   }
 }
