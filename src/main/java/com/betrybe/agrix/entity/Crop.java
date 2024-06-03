@@ -25,6 +25,13 @@ public class Crop {
   @JoinColumn(name = "farm_id")
   private Farm farm;
 
+  public Crop() {
+  }
+
+  public Crop(String name, double plantedArea) {
+    this.name = name;
+    this.plantedArea = plantedArea;
+  }
 
   /**
    * Gets id.
@@ -72,18 +79,18 @@ public class Crop {
   }
 
   /**
-   * Gets farm.
+   * Gets farmId.
    *
-   * @return the farm
+   * @return the farmId
    */
   public Farm getFarm() {
     return farm;
   }
 
   /**
-   * Sets farm.
+   * Sets farmId.
    *
-   * @param farm the farm
+   * @param farm the farmId
    */
   public void setFarm(Farm farm) {
     this.farm = farm;

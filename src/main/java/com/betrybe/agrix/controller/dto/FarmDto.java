@@ -8,10 +8,10 @@ import com.betrybe.agrix.entity.Farm;
 public record FarmDto(Long id, String name, double size) {
 
   /**
-   * From entity farm dto.
+   * From entity farmId dto.
    *
-   * @param farm the farm
-   * @return the farm dto
+   * @param farm the farmId
+   * @return the farmId dto
    */
   public static FarmDto fromEntity(Farm farm) {
     return new FarmDto(
