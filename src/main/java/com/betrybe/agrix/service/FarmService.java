@@ -86,7 +86,8 @@ public class FarmService {
    */
   public List<Crop> getFarmCrops(Long farmId) throws FarmNotFoundException {
     Farm farm = findById(farmId);
-    return cropRepository.findByFarmId(farmId);
+
+    return farm.getCrops();
   }
 
 }
