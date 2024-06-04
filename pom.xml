@@ -130,6 +130,11 @@
     <!-- Adicione suas dependências aqui, mas não altere as que já estão configuradas -->
 
     <dependency>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
       <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
       <groupId>org.springdoc</groupId>
       <version>2.5.0</version>
