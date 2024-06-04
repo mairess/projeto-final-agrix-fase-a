@@ -7,8 +7,12 @@ import com.betrybe.agrix.controller.dto.FarmDto;
 import com.betrybe.agrix.entity.Crop;
 import com.betrybe.agrix.entity.Farm;
 import com.betrybe.agrix.service.FarmService;
-import com.betrybe.agrix.service.exception.CropNotFoundException;
 import com.betrybe.agrix.service.exception.FarmNotFoundException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +47,11 @@ public class FarmController {
    * @throws FarmNotFoundException the farmId not found exception
    */
   @GetMapping("/{farmId}")
+  @Operation(summary = "Gets farm by id", description = "Returns a farm by its id.")
+  @ApiResponse(
+      responseCode = "200",
+      description = "The farm",
+      content = @Content(schema = @Schema(implementation = FarmDto.class)))
   public FarmDto getFarmById(@PathVariable Long farmId) throws FarmNotFoundException {
     return FarmDto.fromEntity(
         farmService.findById(farmId)
@@ -57,6 +66,11 @@ public class FarmController {
    */
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
+  @Operation(summary = "Creates farm", description = "Cretes new farm")
+  @ApiResponse(
+      responseCode = "201",
+      description = "Created farm",
+      content = @Content(schema = @Schema(implementation = FarmDto.class)))
   public FarmDto createFarm(@RequestBody FarmCreationDto farmCreationDto) {
     return FarmDto.fromEntity(
         farmService.create(farmCreationDto.toEntity())
@@ -69,6 +83,11 @@ public class FarmController {
    * @return the list
    */
   @GetMapping
+  @Operation(summary = "Gets all farms", description = "Returns all farms available on system.")
+  @ApiResponse(
+      responseCode = "200",
+      description = "All farms",
+      content = @Content(array = @ArraySchema(schema = @Schema(implementation = FarmDto.class))))
   public List<FarmDto> allFarms() {
     List<Farm> allFarms = farmService.findAll();
     return allFarms.stream().map(FarmDto::fromEntity).toList();
@@ -84,6 +103,11 @@ public class FarmController {
    */
   @PostMapping("/{farmId}/crops")
   @ResponseStatus(HttpStatus.CREATED)
+  @Operation(summary = "Creates farm crop", description = "Cretes new crop to specified farm id")
+  @ApiResponse(
+      responseCode = "201",
+      description = "Created crop",
+      content = @Content(schema = @Schema(implementation = CropDto.class)))
   public CropDto createFarmCrop(@
       PathVariable Long farmId,
       @RequestBody CropCreationDto cropCreationDto)
@@ -99,9 +123,13 @@ public class FarmController {
    * @param farmId the farm id
    * @return the list
    * @throws FarmNotFoundException the farm not found exception
-   * @throws CropNotFoundException the crop not found exception
    */
   @GetMapping("/{farmId}/crops")
+  @Operation(summary = "Gets crops by farm id", description = "Returns all crops by its farm id.")
+  @ApiResponse(
+      responseCode = "200",
+      description = "The farms",
+      content = @Content(array = @ArraySchema(schema = @Schema(implementation = CropDto.class))))
   public List<CropDto> getFarmCrops(@PathVariable Long farmId)
       throws FarmNotFoundException {
     List<Crop> crops = farmService.getFarmCrops(farmId);
