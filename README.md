@@ -16,19 +16,25 @@ Agrix é uma simples API que permite a gestão e o monitoramento das fazendas.
 git clone git@github.com:mairess/projeto-final-agrix-fase-a.git
 ```
 
-2. Rode o banco de dados:
+2. Instale as dependências:
+
+```BASH
+mvn install -DskipTests
+```
+
+3. Inicie o banco de dados:
 
 ```BASH
 docker compose up database -d --build 
 ```
 
-3. Rode a API:
+4. Rode a API:
 
 ```BASH
 mvn spring-boot:run
 ```
 
-4. Veja as rotas disponíveis em:
+5. Veja as rotas disponíveis em:
 
 ```BASH
 http://localhost:8080/swagger-ui/index.html
@@ -44,7 +50,7 @@ http://localhost:8080/swagger-ui/index.html
 git clone git@github.com:mairess/projeto-final-agrix-fase-a.git
 ```
 
-2. Rode o banco de dados:
+2. Inicie a API e o banco de dados:
 
 ```BASH
 docker compose up -d --build 
